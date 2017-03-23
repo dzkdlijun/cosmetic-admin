@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "classpath://org/apache/ibatis/builder/xml/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="cacheEnabled" value="false" />
+    </settings>
+    <typeAliases>
+        <typeAlias alias="User" type="com.cosmetic.mybatis.domain.User"/>
+
+    </typeAliases>
+    <typeHandlers>
+        <!--<typeHandler handler="org.apache.ibatis.type.SqlDateTypeHandler" alias="SqlDateTypeHandler" />-->
+    </typeHandlers>
+    <!--<plugins>-->
+        <!--<plugin interceptor="com.github.pagehelper.PageHelper">-->
+            <!--<property name="dialect" value="postgresql"/>-->
+        <!--</plugin>-->
+    <!--</plugins>-->
+    <mappers>
+        <mapper resource="mybatis/mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>
