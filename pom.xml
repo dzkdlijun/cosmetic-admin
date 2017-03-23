@@ -30,11 +30,11 @@
       <artifactId>mybatis-spring</artifactId>
       <version>${mybatis.spring.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.mybatis.generator</groupId>
-      <artifactId>mybatis-generator-core</artifactId>
-      <version>${mybatis.generator.version}</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.mybatis.generator</groupId>-->
+      <!--<artifactId>mybatis-generator-core</artifactId>-->
+      <!--<version>${mybatis.generator.version}</version>-->
+    <!--</dependency>-->
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis-ehcache</artifactId>
@@ -128,12 +128,19 @@
       <artifactId>fastjson</artifactId>
       <version>1.2.0</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+    <!--<dependency>-->
+      <!--<groupId>javax.servlet</groupId>-->
+      <!--<artifactId>javax.servlet-api</artifactId>-->
+      <!--<version>3.1.0</version>-->
+    <!--</dependency>-->
+
     <!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
-    <dependency>
-      <groupId>javax.persistence</groupId>
-      <artifactId>persistence-api</artifactId>
-      <version>1.0</version>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>javax.persistence</groupId>-->
+      <!--<artifactId>persistence-api</artifactId>-->
+      <!--<version>1.0</version>-->
+    <!--</dependency>-->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>

@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache"
        xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <context:component-scan base-package="com.cosmetic"/>
 
@@ -41,23 +42,33 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="druidDataSource"/>
         <property name="configLocation" value="classpath:mybatis/sqlMapConfig.xml"/>
+        <!-- mapper扫描 -->
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"></property>
     </bean>
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
 
+    <!-- 扫描包 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.cosmetic.mybatis.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
     <!--cache manager-->
 
-    <cache:annotation-driven cache-manager="ehcacheManager" key-generator="keyGenerator" />
+    <!--<cache:annotation-driven cache-manager="ehcacheManager" key-generator="keyGenerator" />-->
 
-    <bean id="keyGenerator" class="org.springframework.cache.interceptor.SimpleKeyGenerator" />
+    <!--<bean id="keyGenerator" class="org.springframework.cache.interceptor.SimpleKeyGenerator" />-->
 
-    <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
-        <property name="cacheManager" ref="ehcacheManagerFactory"/>
-    </bean>
+    <!--<bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">-->
+        <!--<property name="cacheManager" ref="ehcacheManagerFactory"/>-->
+    <!--</bean>-->
 
-    <bean id="ehcacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-        <property name="configLocation" value="classpath:ehcache.xml"/>
-        <property name="shared" value="true" />
-    </bean>
+    <!--<bean id="ehcacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">-->
+        <!--<property name="configLocation" value="classpath:ehcache.xml"/>-->
+        <!--<property name="shared" value="true" />-->
+    <!--</bean>-->
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>

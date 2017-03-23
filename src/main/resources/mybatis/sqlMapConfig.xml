@@ -17,7 +17,7 @@
             <!--<property name="dialect" value="postgresql"/>-->
         <!--</plugin>-->
     <!--</plugins>-->
-    <mappers>
-        <mapper resource="mybatis/mapper/UserMapper.xml"/>
-    </mappers>
+    <!--<mappers>-->
+        <!--<mapper resource="mybatis/mapper/UserMapper.xml"/>-->
+    <!--</mappers>-->
 </configuration>
