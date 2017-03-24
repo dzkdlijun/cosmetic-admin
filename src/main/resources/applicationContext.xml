@@ -50,10 +50,10 @@
     </bean>
 
     <!-- 扫描包 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.cosmetic.mybatis.dao"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-    </bean>
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--<property name="basePackage" value="com.cosmetic.mybatis.dao"/>-->
+        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
+    <!--</bean>-->
 
     <!--cache manager-->
 
@@ -71,4 +71,5 @@
     <!--</bean>-->
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
+
 </beans>

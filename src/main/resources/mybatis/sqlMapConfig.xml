@@ -7,7 +7,7 @@
     </settings>
     <typeAliases>
         <typeAlias alias="User" type="com.cosmetic.mybatis.domain.User"/>
-
+        <typeAlias alias="Address" type="com.cosmetic.mybatis.domain.Address"/>
     </typeAliases>
     <typeHandlers>
         <!--<typeHandler handler="org.apache.ibatis.type.SqlDateTypeHandler" alias="SqlDateTypeHandler" />-->
