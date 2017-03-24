@@ -68,4 +68,10 @@
       age = #{age,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectListByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT * FROM users WHERE 1=1
+    AND user_name = #{name,jdbcType=VARCHAR}
+    ORDER BY id
+  </select>
 </mapper>

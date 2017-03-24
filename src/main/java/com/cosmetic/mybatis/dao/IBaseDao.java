@@ -2,6 +2,8 @@ package com.cosmetic.mybatis.dao;
 
 import com.cosmetic.mybatis.domain.BaseDomain;
 
+import java.util.List;
+
 /**
  * IBaseDao
  *
@@ -21,4 +23,6 @@ public interface IBaseDao<T extends BaseDomain> {
     int updateByPrimaryKeySelective(T record);
 
     int updateByPrimaryKey(T record);
+
+    List<T> selectListByName(String name);
 }

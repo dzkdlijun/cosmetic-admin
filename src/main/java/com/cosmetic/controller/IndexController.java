@@ -5,6 +5,7 @@ import com.cosmetic.mybatis.domain.BaseDomain;
 import com.cosmetic.mybatis.domain.User;
 import com.cosmetic.mybatis.service.IAddressService;
 import com.cosmetic.mybatis.service.IUserService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,13 +26,13 @@ public class IndexController {
     private IAddressService addressService;
 
     @RequestMapping(value = {"", "index"})
-    public String getTest(){
+    public String getTest() {
         return "index";
     }
 
     @RequestMapping(value = "test")
     @ResponseBody
-    public List<BaseDomain> test(){
+    public List<BaseDomain> test() {
         List<BaseDomain> datas = new ArrayList();
         User user = userService.selectByPrimaryKey(1l);
         Address address = addressService.selectByPrimaryKey(1l);
@@ -40,9 +41,23 @@ public class IndexController {
         return datas;
     }
 
+    @RequestMapping(value = "page/test")
+    @ResponseBody
+    public PageInfo pageTest(String name, int pageNo, int pageSize) {
+        PageInfo pageInfo = userService.selectPageByName(name, pageNo, pageSize);
+        return pageInfo;
+    }
+
+    @RequestMapping(value = "list/test")
+    @ResponseBody
+    public List<User> listTest(String name) {
+        List<User> list = userService.selectListByName(name);
+        return list;
+    }
+
     @RequestMapping(value = "test/add")
     @ResponseBody
-    public int testAdd(){
+    public int testAdd() {
         User user = new User();
         user.setAge(34);
         user.setUserName("lijun");
